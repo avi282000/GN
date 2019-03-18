@@ -44,8 +44,8 @@ def message_user(text):
 	TextSurf, TextRect =text_obj(text, bigText,white)
 	TextRect.center=((display_width/2),(display_height/2))
 	gameDisplay.blit(TextSurf, TextRect)
-	time.sleep(3)
 	pygame.display.flip()
+	time.sleep(1)
 	game_loop()
 
 def dump():
@@ -76,14 +76,14 @@ def game_loop():
 			if event.type==pygame.QUIT: 
 				pygame.quit()
 				quit()
-		if event.type==pygame.KEYDOWN:
-			if event.key==pygame.K_LEFT:
-				x_change=-8
-			elif event.key==pygame.K_RIGHT:
-				x_change=8
-		if event.type==pygame.KEYUP:
-			if event.key==pygame.K_LEFT or event.key==pygame.K_RIGHT:
-				x_change=0	
+			elif event.type==pygame.KEYDOWN:
+				if event.key==pygame.K_LEFT:
+					x_change=-8
+				elif event.key==pygame.K_RIGHT:
+					x_change=8
+			if event.type==pygame.KEYUP:
+				if event.key==pygame.K_LEFT or event.key==pygame.K_RIGHT:
+					x_change=0	
 		x+=x_change
 		
 		gameDisplay.blit(pygame.image.load("bg.jpg"),(0,0))
